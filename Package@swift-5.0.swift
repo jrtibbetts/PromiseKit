@@ -1,8 +1,11 @@
-// swift-tools-version:4.0
+// swift-tools-version:5.0
 
 import PackageDescription
 
 let pkg = Package(name: "PromiseKit")
+pkg.platforms = [
+   .macOS(.v10_10), .iOS(.v8), .tvOS(.v9), .watchOS(.v2)
+]
 pkg.products = [
     .library(name: "PromiseKit", targets: ["PromiseKit"]),
 ]
@@ -22,7 +25,7 @@ pmk.exclude = [
     "race.m",
     "Deprecations.swift"
 ]
-pkg.swiftLanguageVersions = [3, 4]
+pkg.swiftLanguageVersions = [.v4, .v4_2, .v5]
 pkg.targets = [
     pmk,
     .testTarget(name: "A+", dependencies: ["PromiseKit"]),
